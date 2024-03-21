@@ -1,2 +1,5 @@
 *.*
 !*.lua
+!*.md
+!LICENSE
+!.gitignore
