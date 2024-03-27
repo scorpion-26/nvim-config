@@ -151,15 +151,15 @@ cmp.setup({
             end
         end, { "i", "s" }),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        ['<BS>'] = cmp.mapping(function(fallback)
-            fallback()
-            -- Manually update cmp when backspacing to avoid only showing filtered results
-            -- This doesn't completely fix the issue though...
-            if cmp.visible() then
-                -- Manual (default ContextReason) seems to be very laggy.
-                cmp.complete({ reason = cmp.ContextReason.Auto })
-            end
-        end, { "i" })
+        --['<BS>'] = cmp.mapping(function(fallback)
+        --    fallback()
+        --    -- Manually update cmp when backspacing to avoid only showing filtered results
+        --    -- This doesn't completely fix the issue though...
+        --    if cmp.visible() then
+        --        -- Manual (default ContextReason) seems to be very laggy.
+        --        cmp.complete({ reason = cmp.ContextReason.Auto })
+        --    end
+        --end, { "i" })
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
