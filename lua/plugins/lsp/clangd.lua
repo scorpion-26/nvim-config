@@ -80,15 +80,15 @@ return {
                 -- clangd doesn't give us any more details other than the name of the function.
                 if not first_line:find("%[%d+ overloads%]") then
                     ret_type = first_line
-                else
-                    -- Replace the detail, so we also have the function definition
-                    entry.completion_item.detail = entry.completion_item.detail:gsub("^" .. first_line, vim_item.menu, 1)
                 end
             end
             if ret_type ~= "" then
                 ret_type = fix_ref_and_ptr(ret_type)
                 local args = fix_ref_and_ptr(entry.completion_item.labelDetails.detail)
-                vim_item.menu = shorten_signature(ret_type .. " " .. args, 50)
+                local signature = ret_type .. " " .. args;
+                vim_item.menu = shorten_signature(signature, 50)
+                -- Replace the detail, so we also have the function definition
+                entry.completion_item.detail = entry.completion_item.detail:gsub("^" .. first_line, signature, 1)
             end
         end
 
