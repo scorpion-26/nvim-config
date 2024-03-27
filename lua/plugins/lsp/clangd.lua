@@ -4,14 +4,14 @@ local fix_ref_and_ptr = function(in_str)
     -- on small amounts of */&'s, so it should be fine
 
     local count = 0
-    -- Fix *
+    -- Fix * and &
     repeat
-        in_str, count = in_str:gsub(" %*", "* ")
+        in_str, count = in_str:gsub(" ([%*%&])", "%1 ")
     until count == 0
-    -- Fix &
-    repeat
-        in_str, count = in_str:gsub(" %&", "& ")
-    until count == 0
+
+    -- Fix extra much whitespace ("[*&] [,>)]" to "[*&][,>)]", or at the end of string)
+    -- This can happen, in templates, functions, so check for ,>)
+    in_str = in_str:gsub("([%&%*]) ([,>)])", "%1%2")
     local trimmed, _ = in_str:gsub(" +$", "")
     return trimmed
 end
