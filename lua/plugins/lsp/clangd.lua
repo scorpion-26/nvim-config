@@ -32,9 +32,13 @@ local get_first_line = function(str)
 end
 
 local shorten_signature = function(sig, max_width)
+    if #sig <= max_width then
+        return sig
+    end
+
     local count = 1
     while #sig > max_width and count ~= 0 do
-        -- Replace last argument
+        -- Replace last argument. Note that this doesn't work for the first arg
         sig, count = sig:gsub(",.*%)$", ")")
     end
     local all_args_replaced = false
