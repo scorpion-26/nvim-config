@@ -203,8 +203,13 @@ require('lspconfig')['omnisharp'].setup {
 local setup_jdtls = function()
     local jdtls = mason_install_dir .. 'bin/jdtls'
     local java_debug = vim.fn.glob(mason_install_dir .. 'packages/java-debug-adapter/extension/server/*.jar', 1)
+    -- I don't want to be spammed with useless information thank you.
+    local jdtls_capabilities = capabilities;
+    jdtls_capabilities.window = {
+        workDoneProgress = false
+    }
     local config = {
-        capabilities = capabilities,
+        capabilities = jdtls_capabilities,
         cmd = { jdtls },
         root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
         init_options = {
