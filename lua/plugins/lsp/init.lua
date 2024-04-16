@@ -199,6 +199,10 @@ require('lspconfig')['omnisharp'].setup {
     capabilities = capabilities
 }
 
+require('lspconfig')['ocamllsp'].setup {
+    capabilities = capabilities
+}
+
 -- nvim-jdtls
 local setup_jdtls = function()
     local jdtls = mason_install_dir .. 'bin/jdtls'
