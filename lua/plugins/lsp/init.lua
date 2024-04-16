@@ -96,30 +96,9 @@ cmp.setup({
                 vim_item = require 'plugins.lsp.rust_analyzer'.completion_format(entry, vim_item)
             elseif client_name == "clangd" then
                 vim_item = require 'plugins.lsp.clangd'.completion_format(entry, vim_item)
+            elseif client_name == "jdtls" then
+                vim_item = require 'plugins.lsp.jdtls'.completion_format(entry, vim_item)
             end
-
-
-            -- Some java stuff
-            --if entry.source.name == "jdtls" then
-            --    if strings[2] == "Constructor" then
-            --        kind.abbr = entry.completion_item.label .. entry.completion_item.labelDetails.detail;
-            --    else
-            --        kind.abbr = entry.completion_item.filterText or kind.abbr  -- lspconfig jdtls
-            --    end
-            --end
-
-            --kind.menu = ({
-            --    buffer = "[Buffer]",
-            --    nvim_lsp = "[LSP]",
-            --    luasnip = "[LuaSnip]",
-            --    nvim_lua = "[Lua]",
-            --    latex_symbols = "[LaTeX]",
-            --})[entry.source.name]
-
-            --vim.print(vim_item)
-            --vim.print(entry.completion_item)
-            --vim.print(entry.source.name)
-            --vim.print(entry.source.source.client)
 
             return vim_item
         end,
