@@ -66,3 +66,7 @@ hl("DiagnosticVirtualTextWarn", { link = "DiagnosticWarn" })
 hl("DiagnosticVirtualTextInfo", { link = "DiagnosticInfo" })
 hl("DiagnosticVirtualTextHint", { link = "DiagnosticHint" })
 hl("DiagnosticVirtualTextOk", { link = "DiagnosticOk" })
+
+-- Extra whitespace. https://stackoverflow.com/questions/4617059/showing-trailing-spaces-in-vim
+-- Activated manually
+hl("ExtraWhitespace", { fg="#FF0000", undercurl=true})

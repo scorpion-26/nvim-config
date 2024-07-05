@@ -180,6 +180,15 @@ local keymaps = {
                 vim.cmd("!pdflatex % -shell-escape")
             end,
         },
+
+        -- Color highlight
+        ["<leader>cw"] = {
+            exec = function()
+                -- https://vim.fandom.com/wiki/Highlight_unwanted_spaces
+                vim.cmd('au InsertEnter * match ExtraWhitespace /\\s\\+\\%#\\@<!$/')
+                vim.cmd('au InsertLeave * match ExtraWhitespace /\\s\\+$/')
+            end,
+        }
     },
 }
 
