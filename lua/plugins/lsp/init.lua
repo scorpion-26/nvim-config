@@ -17,7 +17,7 @@ local icons = {
     Module = "",
     Property = "",
     Unit = "", -- ? What is this even
-    Value = "󰎠", -- ?
+    Value = "󰎠", -- Used by ocamllsp, overriden in the ocamllsp config
     Enum = "",
     Keyword = "󰌋",
     Snippet = "",
@@ -98,6 +98,8 @@ cmp.setup({
                 vim_item = require 'plugins.lsp.clangd'.completion_format(entry, vim_item)
             elseif client_name == "jdtls" then
                 vim_item = require 'plugins.lsp.jdtls'.completion_format(entry, vim_item)
+            elseif client_name == "ocamllsp" then
+                vim_item = require 'plugins.lsp.ocamllsp'.completion_format(entry, vim_item)
             end
 
             return vim_item
@@ -200,6 +202,8 @@ require('lspconfig')['omnisharp'].setup {
 }
 
 require('lspconfig')['ocamllsp'].setup {
+    -- enable semantic highlighting
+    cmd_env = { OCAMLLSP_SEMANTIC_HIGHLIGHTING = "full/delta"},
     capabilities = capabilities
 }
 
