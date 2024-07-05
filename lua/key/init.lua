@@ -177,7 +177,7 @@ local keymaps = {
         -- LaTeX
         ["<leader>bl"] = {
             exec = function()
-                vim.cmd("!pdflatex % -shell-escape")
+                vim.cmd("!pdflatex -shell-escape %")
             end,
         },
 
