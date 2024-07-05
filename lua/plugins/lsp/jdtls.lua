@@ -1,6 +1,5 @@
 return {
     completion_format = function(entry, vim_item)
-        vim.print(entry.completion_item)
         local is_method = entry.completion_item.kind == 2
         local is_function = entry.completion_item.kind == 3
         local is_function_like = is_method or is_function;
