@@ -41,6 +41,7 @@ hl("@type.qualifier", { link = "@keyword" })
 
 -- LaTeX: Math and envs should be hl'ed 
 hl("@text.math", { link = "@property"})
+hl("@markup.math", { link = "@text.math"})
 hl("@operator.latex", { link = "@punctuation.bracket"})
 hl("@text.environment", { link = "@namespace"})
 hl("@text.environment.name", { link = "@text.title"})
