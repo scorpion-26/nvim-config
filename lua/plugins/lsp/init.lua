@@ -186,7 +186,7 @@ require('lspconfig')['clangd'].setup {
     cmd = { "clangd", "--background-index" },
     capabilities = capabilities
 }
-require('lspconfig')['jedi_language_server'].setup {
+require('lspconfig')['pylsp'].setup {
     capabilities = capabilities
 }
 
